@@ -24,10 +24,25 @@ Node* buildTree(vector<int > po){
     if(po[idx] == -1) return NULL;
 
     Node* root = new Node(po[idx]);
+
+    //  cout << root->data << " ";
     root->left = buildTree(po);
     root->right = buildTree(po);
 
+   
+
     return root;
+}
+
+void preOrderTraversal(Node* root){
+
+    if(root == NULL) return;
+
+    cout << root->data << " ";
+
+     preOrderTraversal(root->left);
+     preOrderTraversal(root->right);
+     return;
 }
 
 
@@ -35,10 +50,6 @@ int main(){
     vector<int> po = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
 
     Node* root =  buildTree(po);
-    cout  << root->data << endl;
-    cout  << root->left->data << endl;
-    cout  << root->right->data << endl;
-    cout  << root->right->left->data << endl;
-    cout  << root->right->right->data << endl;
-
+   
+    preOrderTraversal(root);
 }
